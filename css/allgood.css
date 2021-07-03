@@ -1,0 +1,9 @@
+.single_row>div>div{
+    background-color: darkturquoise;
+    height: 337px;
+}
+img:hover{
+    transition: all 0.8s;
+    transform: scale(1.1);
+}
+

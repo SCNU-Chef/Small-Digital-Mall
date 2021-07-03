@@ -1,0 +1,33 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-color: #E3E4E5;
+}
+.goods_show{
+	width: 1400px;
+
+	margin-left: 266px;
+	margin-top: 125px;
+	
+}
+#myadd{
+	background-color: white;
+	border-collapse: separate;
+	border-spacing: 0px 10px;
+	
+}
+#myadd tr,#myadd td{
+	border: 1px solid darkgray;
+}
+/*#guess_like{*/
+/*	margin-top: 100px;*/
+/*	width: 1000px;*/
+/*	margin-left: 260px;*/
+/*}*/
+/*.mybutton{*/
+/*	!*width: 1000px;*!*/
+/*	!*margin-left: 260px;*!*/
+/*	!*margin-top: 200px;*!*/
+/*}*/

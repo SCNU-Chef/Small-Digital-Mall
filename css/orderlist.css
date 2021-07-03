@@ -1,0 +1,42 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	
+}
+body{
+	background-color: #E3E4E5;
+	
+}
+/*.header{
+	height: 100px;
+	border: 1px solid red;
+}*/
+.left{
+	/*margin-left: 150px;*/
+	background-color: white;
+	float: none;
+	width: 200px;
+}
+.right{
+	/*margin-right: 150px;*/
+	float: none;
+	width: 930px;
+}
+.right .ordered{
+	border-collapse: separate;
+	border-spacing: 0px 10px;
+}
+.right .head{
+	background-color: white;
+	margin-bottom: 20px;
+}
+.right .body .orders_total{
+	background-color: white;
+	margin-bottom: 20px;
+}
+.right .ordered .orders_total .orders_top{
+	margin: 0px;
+}
+.right .body .orders_total #orders_picture{
+	margin-bottom: 0px;
+}

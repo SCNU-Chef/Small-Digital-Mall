@@ -1,0 +1,118 @@
+.content .bg{
+    position: absolute;
+    width: 100%;
+    min-width: 1200px;
+    min-height: 760px;
+    height: 95%;
+}
+.middle{
+    position: absolute;
+    width: 600px;
+    height: 550px;
+    border-radius: 4rem;
+    background: black;
+    opacity: 0.3;
+
+}
+.inner{
+    position: relative;
+    width: 600px;
+    height: 550px;
+    border-radius: 4rem;
+    margin: auto;
+    top: 90px;
+}
+.inner_head{
+    position: relative;
+    top: 20px;
+    margin-left: 50px;
+    height: 50px;
+    width: 500px;
+}
+.inner_head h5{
+    margin-top: 10px;
+    float: left;
+    font-size: 23px;
+    color: white;
+}
+.inner_head a{
+    float: left;
+    color: #0056b3;
+    font-size: 30px;
+}
+.inner_head a:hover{
+    color: red;
+    text-decoration: none;
+    transition: 1s;
+}
+.inner_line hr{
+    border: 2px solid royalblue;
+    opacity: 0.6;
+    margin-bottom: 65px;
+}
+.form{
+    position: relative;
+}
+form div{
+    position: relative;
+    width: 500px;
+    height: 50px;
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-left: 60px;
+}
+.inp p{
+    position: absolute;
+    color: white;
+    width: 110px;
+    font-size: 18px;
+    margin-left: 20px;
+}
+.inp input{
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    border: 1px solid #0056b3;
+    border-radius: 1rem;
+    left: 100px;
+    width: 340px;
+    height: 40px;
+    margin-top: -6px;
+    padding-left: 10px;
+    background: transparent;
+}
+.inp{
+    position: relative;
+}
+::-webkit-input-placeholder{ /* WebKit browsers */
+    color: royalblue;
+    font-size: 16px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: royalblue;
+
+    font-size: 16px;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: royalblue;
+    font-size: 16px;
+}
+.btn-self{
+    border: none;
+    border-radius: 1rem;
+    background: transparent;
+    color: #0056b3;
+    margin-top: 30px;
+    width: 250px;
+    height: 40px;
+    font-size: 20px;
+    transition: 0.6s;
+    margin-left: 120px;
+}
+.btn-self:hover{
+    background-color: #0056b3;
+    color: white;
+    font-size: 22px;
+    transition: 0.6s;
+    cursor: pointer;
+}

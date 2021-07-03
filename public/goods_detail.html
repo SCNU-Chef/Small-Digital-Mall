@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品详情</title>
+    <link rel="stylesheet" type="text/css" href="detailgoods.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <script src="jquery-3.5.1.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="headfoot.js"></script>
+    <style>
+        body{background:#e3e4e5}
+    </style>
+    <script>
+        $(window).on('load',function (){
+            var pid= window.location.search.split('=')[1];
+            $.ajax({
+                method: 'POST',
+                url: 'http://10.252.74.83:8080/products/get_product_by_pid',
+                data: {"pid":pid},
+                success: function (data) {
+                    console.log('get_product_by_pid successful');
+                    $('#pname').html(data[0].pname);
+                    $('#price').html('￥'+data[0].price);
+                    $('#sold_count').html(data[0].sold_count);
+
+                    //改变轮播图片&静态图片
+                    var picsarr=document.getElementsByName("carousel_pics");
+                    var staticpics=document.getElementsByName("static_pics");
+                    var pic_arr=data[0].carousel_pics.split('|');
+                    for (let i=0;i<picsarr.length;i++){
+                        picsarr[i].src=pic_arr[i];
+                        staticpics[i].src=pic_arr[i];
+                    }
+                },
+                error: function(xhr, err){
+                    console.log('异步请求注册API失败：')
+                },
+            })
+            fillHead();
+            fillFoot();
+        })
+    </script>
+</head>
+<body>
+<!--header-->
+<div id="header" style="width: 1110px;margin:0 auto"></div>
+
+<div class="container">
+    <!-- 1F内容-->
+    <div class="row mt-1">
+        <div class="col-lg-5 col-md-12 p-0" >
+            <div class="f1_righttop mr-2 mb-1 carousel" id="demo" data-ride="carousel" data-interval="999999">
+                <div class="carousel-inner">
+                    <div class="f1_righttop_1 carousel-item active ">
+                        <img name="carousel_pics" class=" w-100 mt-1 mb-2 mr-2 " style="height: 435px" alt="" />
+                    </div>
+                    <div class="f1_righttop_1 carousel-item ">
+                        <img name="carousel_pics" class=" w-100 mt-1 mb-2 mr-2 " style="height: 435px" alt="" />
+                    </div>
+                    <div class="f1_righttop_1 carousel-item ">
+                        <img name="carousel_pics" class=" w-100 mt-1 mb-2 mr-2 " style="height: 435px" alt="" />
+                    </div>
+                    <div class="f1_righttop_1  carousel-item ">
+                        <img name="carousel_pics" class=" w-100 mt-1 mb-2 mr-2 " style="height: 435px" alt="" />
+                    </div>
+                </div>
+                <a href="#demo" data-slide="next" class="carousel-control-next" >
+                    <span class="carousel-control-next-icon mr-0"></span>
+                </a>
+                <a href="#demo" data-slide="prev" class="carousel-control-prev" >
+                    <span class="carousel-control-prev-icon ml-0"></span>
+                </a>
+                <ul class="carousel-indicators">
+                    <li class="active"  data-slide-to="0" data-target="#demo" ></li>
+                    <li data-slide-to="1" data-target="#demo"></li>
+                    <li data-slide-to="2" data-target="#demo"></li>
+                    <li data-slide-to="3" data-target="#demo"></li>
+                </ul>
+            </div>
+            <div class="f1_rightbottom mr-2 mb-2">
+                <table>
+                    <tr>
+                        <th class="w-25">
+                            <img name="static_pics" class="mb-2 mt-3 mr-3 w-100" style="height: 120px;">
+                        </th>
+                        <th class="w-25">
+                            <img name="static_pics" class="mb-2 mt-3 mr-2 w-100 " style="height: 120px;width: 100px">
+                        </th>
+                        <th class="w-25">
+                            <img name="static_pics" class="mb-2 mt-3 mr-2 w-100" style="height: 120px;width: 100px">
+                        </th>
+                        <th class="w-25">
+                            <img name="static_pics" class="mb-2 mt-3 mr-2 w-100" style="height: 120px;width: 100px">
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div >
+
+        <div class="col-lg-7 col-md-12 p-0 mt-1" style="background-color: white">
+            <div class="f1_lefttop mb-1" >
+                <div class="text-center h3 ">
+                    <br>
+                    <p id="pname"></p>
+                    <br>
+                </div>
+                <div class="text-left h6 text-muted" >
+                    <span style="margin-left: 65px;margin-right: 40px;">价格</span><a class="text-center text-danger h4" id="price"></a><br>
+                </div>
+                <div class="text-left h6 text-muted">
+                    <span style="margin-left: 65px;margin-right: 40px;">产地</span><span>上海</span>
+                </div>
+                <div class="text-left h6 text-muted " >
+                    <span style="margin-left: 65px;margin-right: 40px;">月销</span><a class="text-center text-danger h6" id="sold_count"></a><span style="margin-left: 65px;margin-right: 40px;">积分</span><a class="text-center text-primary h6">240</a><br><br>
+                </div>
+                <div class="text-left h6 text-muted " >
+                    <span style="margin-left: 65px;margin-right: 40px;">颜色</span><button class="btn btn-outline-primary" style="height: 30px;width: 100px"><h6 class="text-center">亮黑色</h6></button><button class="btn btn-outline-primary" style="margin-left:40px;height: 30px;width: 100px"><h6 class="text-center">深蓝色</h6></button><button class="btn btn-outline-primary" style="margin-left:40px;height: 30px;width: 100px"><h6 class="text-center">晨曦金</h6></button><br>
+                </div>
+                <div class="text-left h6 text-muted " >
+                    <button class="btn btn-outline-primary" style="margin-left:135px;height: 30px;width: 100px"><h6 class="text-center">冰霜银</h6></button><button class="btn btn-outline-primary" style="margin-left:40px;height: 30px;width: 100px"><h6 class="text-center">零度白</h6></button><button class="btn btn-outline-primary" style="margin-left:40px;height: 30px;width: 100px"><h6 class="text-center">翡翠绿</h6></button><br><br>
+                </div>
+                <div class="text-left h6 text-muted " >
+                    <span style="margin-left: 65px;margin-right: 40px;">存储</span><button class="btn btn-outline-primary" style="height: 30px;width: 111px"><h6 class="text-center">6+128GB</h6></button><button class="btn btn-outline-primary" style="margin-left:40px;height: 30px;width: 111px"><h6 class="text-center">6+256GB</h6></button><button class="btn btn-outline-primary" style="margin-left:40px;height: 30px;width: 111px"><h6 class="text-center">8+256GB</h6></button><br><br>
+                </div>
+                <div class="text-left h6 text-muted " >
+                    <span style="margin-left: 65px;margin-right: 40px;">数量</span><input class="btn btn-outline-primary" type="number" value="1" min="1" id="goods_num" style="height: 30px;width: 110px">
+                </div>
+            </div>
+            <div class="f1_leftbottom mb-2">
+                <table class="w-100 h-100">
+                    <tr class="w-100 h-100">
+                        <th class="w-50 h-100" style="padding-left: 80px">
+                            <button class="btn btn-outline-primary ml-5 w-50 h-25 " style="background-color: #abdde5"><h6 class="text-center">立即购买</h6></button>
+                        </th>
+                        <th class="w-50 h-100">
+                            <button onclick="addToCart()" class="btn btn-info ml-1 w-50 h-25" ><h6 class="text-center">加入购物车</h6></button>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<div id="footer" class="container w-100"></div>
+</body>
+</html>

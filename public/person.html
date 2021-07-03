@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="person.css"/>
+    <script src="jquery-3.5.1.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="person.js"></script>
+    <script src="headfoot.js"></script>
+    <script>
+        $(window).on('load',function (){
+            fillHead();
+            fillFoot();
+            dateload();
+            searchUser();
+        })
+    </script>
+</head>
+
+<body style="background: #e3e4e5">
+<!--header-->
+<div id="header" style="width: 1110px;margin:0 auto" ></div>
+
+<!--body-->
+<div class="container clearfix ">
+    <div class="row">
+        <div class="col-lg-4 col-md-12 left p-0 mb-2">
+            <div class="info0">
+                <h2 >个人主页</h2>
+                <div class="info ">
+                    <img src="person/head.jpg"/>
+                </div>
+            </div>
+            <div class="info1">
+                <h3>名字</h3>
+                <p id="name"></p>
+                <h3>电话</h3>
+                <p id="phone"></p>
+                <h3>邮箱</h3>
+                <p id="email"></p>
+                <h3>地址</h3>
+                <p id="address"></p>
+                <a class="text-white" href="orderlist.html" style="text-decoration: none;float: right">查看历史订单》</a>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8 col-md-12 right p-0 mr-0">
+            <div class="bg"></div>
+            <div class="top_line clearfix">
+                <button onclick="changeInfo()" class="btn btn-info " style="margin-left: 50px;margin-top: 5px">修改个人信息</button>
+                <button class="btn btn-primary btn_sz" data-toggle="collapse" data-target="#recommend">展开/收起推荐</button>
+            </div>
+            <br>
+
+            <div id="recommend" class="cho_card">
+                <br>
+                <!--    选项卡-->
+                <div class="text-center cho_card_card">
+                    <ul class="text-center nav nav-tabs">
+                        <li class="nav-item"><a href="#tab1" class="nav-link active btn-outline-success" data-toggle="tab">我的日历</a></li>
+                        <li class="nav-item"><a href="#tab2" class="nav-link btn-outline-danger" data-toggle="tab">便民服务</a></li>
+                        <li class="nav-item"><a href="#tab3" class="nav-link btn-outline-warning" data-toggle="tab">推荐表单</a></li>
+                        <li class="nav-item"><a href="#tab4" class="nav-link btn-outline-info" data-toggle="tab">我的收藏</a></li>
+                    </ul>
+                </div>
+                <!--    内容显示区-->
+                <div class="text-center tab-content">
+                    <div id="tab1" class="tab-pane active text-center">
+                        <div class="tab1_info">
+                            <div class="text-center tab1_cal_top">
+                                <h1 style="color: white">我的日历</h1>
+                            </div>
+                            <div class="text-center tab1_cal_bottom">
+                                <h2 id="day" style="font-size: 120px;color: #6ec884"></h2>
+                                <p id="month" style="font-size: 20px;color: #6ec884"></p>
+                                <h2 id="ym" style="margin-top: -10px;color: #6ec884"></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab2" class="tab-pane">
+                        <div class="tab2_info">
+                            <div class="text-center tab2_cal_top">
+                                <h1 style="color: white">便民服务</h1>
+                            </div>
+                            <div class="text-center tab2_cal_bottom">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="person/change.png" alt="">
+                                            <span>兑换货币</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/colthes.png" alt="">
+                                            <span>服饰购买</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/communicate.png" alt="">
+                                            <span>多人协作</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/house.png" alt="">
+                                            <span>房屋买卖</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="person/idea.png" alt="">
+                                            <span>样式设计</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/pig.png" alt="">
+                                            <span>金猪储蓄</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/savemoney.png" alt="">
+                                            <span>网上存钱</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/schedule.png" alt="">
+                                            <span>日程安排</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <img src="person/savery.png" alt="">
+                                            <span>消费限额</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/set.png" alt="">
+                                            <span>团队管理</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/time.png" alt="">
+                                            <span>时间计划</span>
+                                        </td>
+                                        <td>
+                                            <img src="person/wallet.png" alt="">
+                                            <span>持有家产</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab3" class="tab-pane"></div>
+                    <div id="tab4" class="tab-pane"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<div id="footer" class="container w-100"></div>
+</body>
+</html>

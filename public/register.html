@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="register.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <script src="jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="reglog.js"></script>
+</head>
+<body>
+    <div>
+        <div class="content">
+            <img class="bg" src="register/reg_bg.jpg" alt="">
+            <div class="inner">
+                <div class="middle"></div>
+                <div class="inner_head">
+                    <h5>欢迎您注册，如果您已有账户请在此点击</h5>
+                    <a href="login.html">登录</a>
+                </div>
+                <div class="inner_line">
+                    <hr/>
+                </div>
+                <div class="form">
+                    <form action="">
+                        <div class="inp clearfix">
+                            <p>用户名：</p>
+                            <input type="text" id="uname" placeholder="请输入注册账号的用户名" />
+                        </div>
+                        <div class="inp clearfix">
+                            <p>用户密码：</p>
+                            <input type="password" id="upwd" placeholder="请输入注册账号的密码" />
+                        </div>
+                        <div class="inp clearfix">
+                            <p>确认密码：</p>
+                            <input type="password" id="reupwd" placeholder="请再次输入注册账号的密码" />
+                        </div>
+                        <div class="inp clearfix">
+                            <p>手机号码：</p>
+                            <input type="tel" id="uphone" placeholder="请输入注册账号的手机号码" />
+                        </div>
+                        <div class="inp clearfix">
+                            <p>邮箱：</p>
+                            <input type="text" id="uemail" placeholder="请输入注册账号的邮箱" />
+                        </div>
+                        <div>
+                            <button class="btn-self" onclick="reg()">注册</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

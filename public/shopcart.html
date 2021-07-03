@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<link rel="stylesheet" type="text/css" href="shopcart.css">
+		<script src="jquery-3.5.1.js"></script>
+		<script src="popper.min.js"></script>
+		<script src="bootstrap.min.js"></script>
+		<script src="shopcart.js"></script>
+		<script src="headfoot.js"></script>
+		<script>
+			$(window).on('load',function (e){
+				fillHead();
+				fillFoot();
+				var data1=new Array(),data2=new Array();
+				let phone=localStorage.getItem("phone");
+			    $.ajax({
+			        method: 'POST',
+			        url: 'http://10.252.74.83:8080/shopping_cart/all_pro_of_shopping_cart',
+					data:{"phone":phone},
+			        success: function (data) {//获取到product表单的数据
+						console.log('all_pro_of_shopping_cart successful')
+			        	for(var i =0;i<data.length;i++){
+			            	data1.push(data[i]);
+						}
+
+						$.ajax({
+							method: 'POST',
+							url: 'http://10.252.74.83:8080/shopping_cart/all_pro_of_shopping_cart2',
+							data:{"phone":phone},
+							success: function (data) {//获取到shopping_cart表单的数据
+								console.log('all_pro_of_shopping_cart2 successful')
+								for(var i =0;i<data.length;i++){
+									data2.push(data[i]);
+								}
+								insertGoods(data1,data2);
+							},
+							error: function(xhr, err){
+								console.log('异步请求注册API失败：')
+							},
+						})
+
+			        },
+			        error: function(xhr, err){
+			            console.log('异步请求注册API失败：')
+			        },
+			    })
+			})
+		</script>
+	</head>
+	<body>
+		<div id="header" style="width: 1110px;margin:0 auto"></div>
+
+	    <div class="goods_show container p-0 mt-2 mb-2" style="margin:0 auto;background-color: white" >
+			<table id="myadd" class="text-center " style="width: 90%;margin-left: 50px">
+				<!--表格顶端标题-->
+				<caption style="caption-side: top;padding-left: 20px;" class="h4">全部商品</caption>
+				<!--表格底端按钮：付款按钮，删除选中商品按钮等-->
+				<caption style="caption-side: bottom;padding-left: 20px;" class="h4">
+					<input type="button" onclick="deleteSelect(this)" value="删除选中商品" class="btn btn-info mt-4 mr-1">
+					<input type="button" value="移入关注" class="btn btn-primary mt-4" >
+					<input type="button" style="float: right;cursor: pointer;" onclick="checkOut()" value="生成订单" class="btn btn-info mt-4" />
+					<button class="btn btn-primary mt-4 mr-2" style="float: right;cursor: pointer;" ><a style="text-decoration: none" class="text-white" href="orderlist.html">查看历史订单</a></button>
+				</caption>
+				<!--表头行-->
+				<tr style="height: 50px;text-align: center;">
+					<td><input class="text-center h4" type="checkbox" id="selall" onclick="selAll()" />全选</td>
+					<td><p class="text-center h5">商品</p></td>
+					<td><p class="text-center h5">单价</p></td>
+					<td><p class="text-center h5">数量</p></td>
+					<td><p class="text-center h5">小计</p></td>
+					<td><p class="text-center h5">操作</p></td>
+				</tr>
+				<!--此处每向购物车添加一件新商品，该表格就新建一行-->
+
+			</table>
+		</div>
+
+		<!--商品推荐轮播图-->
+		<div id="guess_like" class="carousel container mt-2" style="background-color: white">
+			<h3 style="padding-left: 40px;">猜你喜欢</h3>
+			<!-- 1.轮播图片-->
+	        <div class="carousel-inner" >
+	            <div class="carousel-item active">
+	            	<img src="apple1.jpg" style="width: 150px;margin-left: 220px;cursor: pointer;" alt=""/>
+		            <img src="canon1.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+		            <img src="dell1.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+		            <img src="ps54.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+	            </div>
+	            <div class="carousel-item">
+	                <img src="apple2.jpg" style="width: 150px;margin-left: 220px;cursor: pointer;" alt=""/>
+		            <img src="canon2.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+		            <img src="dell2.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+		            <img src="ps52.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+	            </div>
+	            <div class="carousel-item">
+	                <img src="apple3.jpg" style="width: 150px;margin-left: 220px;cursor: pointer;" alt=""/>
+		            <img src="canon3.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+		            <img src="dell3.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+		            <img src="ps53.jpg" style="width: 150px;margin-left: 15px;cursor: pointer;" alt=""/>
+	            </div>
+	        </div>
+	        <!-- 2.左右箭头-->
+	        <a href="#guess_like" data-slide="next" class="carousel-control-next">
+	            <span class="carousel-control-next-icon"></span>
+	        </a>
+	        <a href="#guess_like" data-slide="prev" class="carousel-control-prev">
+	            <span class="carousel-control-prev-icon"></span>
+	        </a>
+		</div>
+
+	<!--footer-->
+	<div id="footer" class="container w-100"></div>
+	</body>
+</html>

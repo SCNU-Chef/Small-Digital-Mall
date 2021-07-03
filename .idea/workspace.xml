@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dda027b0-cbe8-49f7-b4aa-6820d36863c6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1lk0T08a6dU6ZjSPle4IaDNNZFo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img/register" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\Desktop\IMP\img\register" />
+      <recent name="C:\Users\DELL\Desktop\IMP\public" />
+      <recent name="C:\Users\DELL\Desktop\IMP\js" />
+      <recent name="C:\Users\DELL\Desktop\IMP\router" />
+      <recent name="C:\Users\DELL\Desktop\IMP" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dda027b0-cbe8-49f7-b4aa-6820d36863c6" name="Default Changelist" comment="" />
+      <created>1608125789877</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608125789877</updated>
+      <workItem from="1608125792319" duration="1983000" />
+      <workItem from="1608133518390" duration="2973000" />
+      <workItem from="1608193094736" duration="22229000" />
+      <workItem from="1608277861635" duration="23154000" />
+      <workItem from="1608342158816" duration="11460000" />
+      <workItem from="1608364068654" duration="3291000" />
+      <workItem from="1608367543522" duration="6261000" />
+      <workItem from="1608383030625" duration="2362000" />
+      <workItem from="1608386692352" duration="1258000" />
+      <workItem from="1608453991641" duration="59000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="222" y="66" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608291575299">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="222" y="66" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1608291575299" />
+    <state x="498" y="157" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608347445696">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="157" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608347445696" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1608352796098">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1608352796098" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1608352833298">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1608352833298" />
+  </component>
+</project>

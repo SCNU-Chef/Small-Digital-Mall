@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>所有商品</title>
+    <!--导入boot四个文件，导入顺序固定-->
+    <link rel="stylesheet" type="text/css" href="allgood.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="jquery-3.5.1.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="headfoot.js"></script>
+    <script src="goodrel.js"></script>
+    <style type='text/css'>
+        body{background:#e3e4e5}
+    </style>
+    <script>
+        $(window).on('load',function (){
+            fillHead();
+            fillFoot();
+            $.ajax({
+                method: 'POST',
+                url: 'http://10.252.74.83:8080/products/get_product',
+                success: function (data) {//成功获取到服务器返回的数据
+                    console.log('get_product successful');
+                    var show_area=document.getElementById("goods_show");//商品展示区
+                    var single_row=document.createElement("div");//首行
+                    single_row.className = "single_row row mt_2";
+                    //当商品数不足4个
+                    if (data.length<4){
+                        for (let i=0;i<data.length;i++){
+                            let content="";
+                            content="<div class=\"col-lg-3 col-md-6 col-sm-12 p-0\">\n" +
+                                "        <div class=\"mr-1 mb-2\">\n" +
+                                "            <div>\n" +
+                                "                <img src=\""+data[i].img+"\" class=\"w-100 \" style=\"height: 280px\" alt=\"\"/>\n" +
+                                "            </div>\n" +
+                                "            <div class=\"text-center h5\">\n" +
+                                "                <a style=\"text-decoration: none\" onclick=\"goToDetails("+Number(data[i].pid)+")\" class=\"text-dark\">"+data[i].pname+"<br>\n" +
+                                "                    <h4 class=\"text-danger\">￥"+data[i].price+"</h4></a>\n" +
+                                "            </div>\n" +
+                                "        </div>\n" +
+                                "    </div>\n";
+                            single_row.innerHTML+=content;
+                        }
+                        show_area.appendChild(single_row);
+                    }
+                    //当商品数>4
+                    else {
+                        let linecount=0;
+                        for (var i=0;i<data.length;i++){
+                            let content="";
+                            content="<div class=\"col-lg-3 col-md-6 col-sm-12 p-0\">\n" +
+                                "        <div class=\"mr-1 mb-2\">\n" +
+                                "            <div>\n" +
+                                "                <img src=\""+data[i].img+"\" class=\"w-100 \" style=\"height: 280px\" alt=\"\"/>\n" +
+                                "            </div>\n" +
+                                "            <div class=\"text-center h5\">\n" +
+                                "                <a style=\"text-decoration: none\" onclick=\"goToDetails("+Number(data[i].pid)+")\" class=\"text-dark\">"+data[i].pname+"<br>\n" +
+                                "                    <h4 class=\"text-danger\">￥"+data[i].price+"</h4></a>\n" +
+                                "            </div>\n" +
+                                "        </div>\n" +
+                                "    </div>\n";
+                            single_row.innerHTML+=content;
+                            if((i+1)%4===0) {//当每行商品数刚好为4时
+                                show_area.appendChild(single_row);
+                                single_row = document.createElement("div");
+                                single_row.className = "single_row row mt_2";
+                                linecount++;
+                            }
+                            if (data.length-linecount*4<4){//将剩下不足4个的商品显示在最后一行
+                                show_area.appendChild(single_row);
+                            }
+                        }
+                    }
+                },
+                error: function(xhr, err){
+                    console.log('全选失败');
+                },
+            })
+        })
+    </script>
+</head>
+<body>
+<!--header-->
+<div id="header" style="width: 1110px;margin:0 auto" ></div>
+
+<!--商品展示区-->
+<div id="goods_show" class="container"></div>
+
+<!--footer-->
+<div id="footer" class="container w-100"></div>
+</body>
+</html>

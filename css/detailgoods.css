@@ -1,0 +1,36 @@
+.f1_head{
+    background-color: #aaaaaa;
+    height: 75px;
+}
+.f1_top>div>div{
+    background-color: #00aeef;
+    height: 337px;
+}
+.f1_bottom>div>div{
+    background-color: #00aeef;
+    height: 337px;
+}
+.f1_teail{
+    background-color: #aaaaaa;
+    height: 75px;
+}
+.f1_lefttop{
+    /*background-color: #aaaaaa;*/
+    height: 450px;
+}
+.f1_leftbottom{
+    /*background-color: #aaaaaa;*/
+    height: 150px;
+}
+.f1_righttop{
+    /*background-color: #aaaaaa;*/
+    height: 450px;
+}
+.f1_rightbottom{
+    /*background-color: #aaaaaa;*/
+    height: 150px;
+}
+.f1_righttop_1{
+    /*background-color: #aaaaaa;*/
+    height: 450px;
+}

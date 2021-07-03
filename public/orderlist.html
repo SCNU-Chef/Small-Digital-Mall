@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>订单页</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="orderlist.css"/>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <script src="jquery-3.5.1.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="orderlist.js"></script>
+    <script src="headfoot.js"></script>
+    <script>
+        $(window).on('load', function (e) {
+            fillHead();
+            fillFoot();
+            var phone=localStorage.getItem("phone");
+            $.ajax({
+                method: 'POST',
+                url: 'http://10.252.74.83:8080/order/get_orderlist',
+                data:{"phone":phone},
+                success: function (data3) {//获取到orderlist表单的数据
+                    console.log('get_orderlist successful');
+                    //解析data[i].product_list,将数据(pid和商品数量)存入两个数组
+                    var pid = new Array(data3.length), num = new Array(data3.length);
+                    $.ajax({
+                        method: 'POST',
+                        url: 'http://10.252.74.83:8080/products/get_product',
+                        success: function (data2) {
+                            console.log('get_product successful');
+                            for (var i = 0; i < data3.length; i++) {
+                                pid[i] = new Array(data2.length);
+                                num[i] = new Array(data2.length);
+                            }
+                            for (var i = 0; i < data3.length; i++) {
+                                var jlength = data3[i].product_list.split('+').length - 1;
+                                for (var j = 0; j < jlength; j++) {
+                                    pid[i][j] = data3[i].product_list.split('+')[j].split('*')[0];
+                                    num[i][j] = data3[i].product_list.split('+')[j].split('*')[1];
+                                }
+                            }
+                            var imgbucket = new Array();
+                            var namebucket = new Array();
+                            var pricebucket=new Array();
+                            $.ajax({
+                                method: 'POST',
+                                url: 'http://10.252.74.83:8080/products/get_product',
+                                success: function (data) {//成功获取到服务器返回的所有商品数据
+                                    console.log('get_product successful');
+                                    for (var i = 0; i < data.length; i++) {
+                                        imgbucket.push(data[i].img);
+                                        namebucket.push(data[i].pname);
+                                        pricebucket.push(data[i].price);
+                                    }
+                                    let phone=localStorage.getItem("phone");
+                                    let address,name;
+                                    $.ajax({
+                                        method: 'POST',
+                                        url: 'http://10.252.74.83:8080/user/search_user',
+                                        data: {"uphone":phone},
+                                        success: function (data) {
+                                            address=data[0].address;
+                                            name=data[0].uname;
+                                            insertTable(data3,pid,num,imgbucket,namebucket,pricebucket,name,address);
+                                        },
+                                        error: function(xhr, err){
+                                            console.log('异步请求注册API失败：')
+                                        },
+                                    })
+
+                                },
+                                error: function (xhr, err) {
+                                    console.log('异步请求注册API失败：')
+                                },
+                            })
+                        },
+                        error: function (xhr, err) {
+                            console.log('异步请求注册API失败：')
+                        },
+                    })
+                },
+                error: function (xhr, err) {
+                    console.log('异步请求注册API失败：')
+                },
+            })
+        })
+    </script>
+</head>
+
+<body>
+<!--header-->
+<div id="header" style="width: 1110px;margin:0 auto"></div>
+
+<div class="container p-0 clearfix" style="text-align: center">
+    <div class="left mr-2" style="float: left">
+        <p class="mb-1" style="font-weight: bold;">订单中心</p>
+        <p class="mb-1">
+            <a href="#">我的订单</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">我的活动</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">评价晒单</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">我的常购商品</a>
+        </p>
+        <p class="mb-3">
+            <a href="#">代下单</a>
+        </p>
+
+        <p class="mb-1" style="font-weight: bold;">关注中心</p>
+        <p class="mb-1">
+            <a href="#">关注的商品</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">关注的活动</a>
+        </p>
+        <p class="mb-3">
+            <a href="#">收藏的内容</a>
+        </p>
+
+        <p class="mb-1" style="font-weight: bold;">资产中心</p>
+        <p class="mb-1">
+            <a href="#">小金库</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">余额</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">银行卡</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">优惠券</a>
+        </p>
+        <p class="mb-3">
+            <a href="#">银行卡</a>
+        </p>
+
+        <p class="mb-1" style="font-weight: bold;">客户服务</p>
+        <p class="mb-1">
+            <a href="#">返修退换货</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">价格保护</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">意见建议</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">我的问答</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">我的发票</a>
+        </p>
+        <p class="mb-1">
+            <a href="#">交易纠纷</a>
+        </p>
+        <p class="mb-3">
+            <a href="#">举报中心</a>
+        </p>
+    </div>
+
+    <div class="right " style="float: left">
+        <div class="head">
+            <p style="line-height: 50px;text-align: left;margin-left: 20px;font-weight: bold;font-size: 20px;">我的订单</p>
+        </div>
+        <div id="body_content" class="body">
+            <!--订单页里新添加一笔订单，就在该div中新建一个表格-->
+            <!--表格里面显示该笔订单所有的商品-->
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<div id="footer" class="container w-100" style="float: bottom;"></div>
+
+</body>
+</html>
